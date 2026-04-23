@@ -1105,9 +1105,9 @@ function FAQ() {
 // FINAL CTA
 // ������������������������������������������������������������������������������������������
 
-function RealAppPhone({ nome, url }) {
+function RealAppPhone({ nome, url, imgSrc, altText }) {
   return (
-    <div className="w-[232px] flex-shrink-0">
+    <div className="w-[232px]">
       <div
         className="relative mx-auto"
         style={{ width: 232, height: 474 }}
@@ -1124,12 +1124,13 @@ function RealAppPhone({ nome, url }) {
             <div className="relative h-8 bg-[#0A0A0A] flex items-center justify-center">
               <div className="w-20 h-4 bg-[#161616] rounded-b-xl" />
             </div>
-            <iframe
-              src={url}
-              title={`Prévia do app ${nome}`}
-              className="w-full h-[calc(100%-32px)] bg-white"
+            <img
+              src={imgSrc}
+              alt={altText}
+              width={390}
+              height={844}
               loading="lazy"
-              referrerPolicy="no-referrer"
+              className="w-full h-[calc(100%-32px)] object-cover object-top"
             />
           </div>
         </div>
@@ -1149,10 +1150,30 @@ function RealAppPhone({ nome, url }) {
 
 function AppExamples() {
   const exemplos = [
-    { nome: 'Hamburgueria do Chefinho', url: 'https://hamburgueriadochefinho.com.br/' },
-    { nome: 'Pizzaria Condor', url: 'https://pizzariacondor.com.br/' },
-    { nome: 'Clickin Burger', url: 'https://clickinburger.netlify.app/' },
-    { nome: "ASAT'S Burguer", url: 'https://asatsburguer.netlify.app/' },
+    {
+      nome: 'Hamburgueria do Chefinho',
+      url: 'https://hamburgueriadochefinho.com.br/',
+      imgSrc: '/apps/chefinho.png',
+      altText: 'App de delivery da Hamburgueria do Chefinho',
+    },
+    {
+      nome: 'Pizzaria Condor',
+      url: 'https://pizzariacondor.com.br/',
+      imgSrc: '/apps/condor.png',
+      altText: 'App de delivery da Pizzaria Condor',
+    },
+    {
+      nome: 'ClickinBurguer',
+      url: 'https://clickinburger.netlify.app/',
+      imgSrc: '/apps/clickinburger.png',
+      altText: 'App de delivery da ClickinBurguer',
+    },
+    {
+      nome: "ASAT'S Burger",
+      url: 'https://asatsburguer.netlify.app/',
+      imgSrc: '/apps/asats.png',
+      altText: "App de delivery do ASAT'S Burger",
+    },
   ]
 
   return (
@@ -1172,13 +1193,19 @@ function AppExamples() {
             4 apps reais dentro da tela
           </h2>
           <p className="text-[#A3A3A3] text-sm mt-3">
-            Visualização ao vivo. Se algum site bloquear iframe, o link abaixo abre normalmente.
+            Apps reais de clientes paulistanos, no ar hoje. Clique em qualquer um pra abrir no seu navegador.
           </p>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto pb-2 px-1 justify-start lg:justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
           {exemplos.map((exemplo) => (
-            <RealAppPhone key={exemplo.url} nome={exemplo.nome} url={exemplo.url} />
+            <RealAppPhone
+              key={exemplo.url}
+              nome={exemplo.nome}
+              url={exemplo.url}
+              imgSrc={exemplo.imgSrc}
+              altText={exemplo.altText}
+            />
           ))}
         </div>
       </div>

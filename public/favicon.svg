@@ -1,0 +1,21 @@
+<svg width="56" height="64" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="bag">
+      <rect x="3" y="20" width="50" height="42" rx="3"/>
+    </clipPath>
+  </defs>
+  <!-- handles -->
+  <path d="M16 20 L16 10 Q16 4 22 4 L34 4 Q40 4 40 10 L40 20" stroke="#00E676" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- bag body -->
+  <rect x="3" y="20" width="50" height="42" rx="3" fill="#00E676"/>
+  <!-- SP skyline -->
+  <g clip-path="url(#bag)">
+    <rect x="3"  y="34" width="7"  height="30" fill="#0A0A0A"/>
+    <rect x="12" y="40" width="5"  height="24" fill="#0A0A0A"/>
+    <rect x="19" y="36" width="6"  height="28" fill="#0A0A0A"/>
+    <rect x="27" y="24" width="3"  height="40" fill="#0A0A0A"/>
+    <rect x="32" y="38" width="5"  height="26" fill="#0A0A0A"/>
+    <rect x="39" y="32" width="8"  height="32" fill="#0A0A0A"/>
+    <rect x="49" y="42" width="5"  height="22" fill="#0A0A0A"/>
+  </g>
+</svg>

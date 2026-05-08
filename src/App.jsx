@@ -1300,102 +1300,27 @@ function FinalCTA() {
 // ������������������������������������������������������������������������������������������
 
 function Footer() {
-  const links = {
-    Produto: ['Funcionalidades', 'Como Funciona', 'Preço', 'FAQ'],
-    Empresa: ['Sobre', 'Blog', 'Contato', 'Parceiros'],
-    Legal: ['Termos de Uso', 'Privacidade', 'Cookies'],
-  }
-
   return (
-    <footer className="border-t border-white/5 pt-16 pb-8 px-4 bg-[#0A0A0A]">
-      <div className="max-w-6xl mx-auto">
-        {/* Top grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <LogoHorizontal iconSize={32} className="mb-4" />
-            <p className="text-[#A3A3A3] text-sm leading-relaxed max-w-xs">
-              O app de delivery próprio do seu restaurante. Zero comissão, feito em São Paulo.
-            </p>
-            {/* WhatsApp contact */}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-[#A3A3A3] hover:text-neon transition-colors text-sm"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-neon flex-shrink-0">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.01 17.01C16.48 18.54 14.32 19.2 12 19.2c-1.87 0-3.69-.48-5.29-1.39L2 19.2l1.41-4.62C2.48 12.97 2 11.52 2 10c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.07-.63 4-1.71 5.6l-.28.41z"/>
-              </svg>
-              (11) 91095-0968
-            </a>
-            {/* Socials */}
-            <div className="flex gap-3 mt-4">
-              {/* Instagram */}
-              <a
-                href="#"
-                className="w-9 h-9 rounded-[6px] border border-white/10 flex items-center justify-center text-[#A3A3A3] hover:text-neon hover:border-neon/30 transition-colors"
-                aria-label="Instagram"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-                </svg>
-              </a>
-              {/* TikTok */}
-              <a
-                href="#"
-                className="w-9 h-9 rounded-[6px] border border-white/10 flex items-center justify-center text-[#A3A3A3] hover:text-neon hover:border-neon/30 transition-colors"
-                aria-label="TikTok"
-              >
-                <svg width="14" height="16" viewBox="0 0 24 28" fill="currentColor">
-                  <path d="M19.6 6.1c-1.2-.8-2.1-2-2.4-3.4h-4v17.7c0 1.5-1.2 2.7-2.7 2.7s-2.7-1.2-2.7-2.7 1.2-2.7 2.7-2.7c.3 0 .6 0 .8.1V13.7c-.3 0-.5-.1-.8-.1C6 13.6 2.8 16.8 2.8 20.7s3.2 7.1 7.1 7.1 7.1-3.2 7.1-7.1V10.9c1.5 1 3.3 1.6 5.2 1.6V8.3c-1 0-2-.4-2.6-2.2z" />
-                </svg>
-              </a>
-              {/* YouTube */}
-              <a
-                href="#"
-                className="w-9 h-9 rounded-[6px] border border-white/10 flex items-center justify-center text-[#A3A3A3] hover:text-neon hover:border-neon/30 transition-colors"
-                aria-label="YouTube"
-              >
-                <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor">
-                  <path d="M23.5 2.8S23.2.8 22.4.1C21.5-.8 20.5-.8 20 -.7 16.7-.5 12 -.5 12 -.5s-4.7 0-8 .2c-.5.1-1.5.1-2.4 1C.8.8.5 2.8.5 2.8S.2 5 .2 7.3v2.1C.2 11.7.5 14 .5 14s.3 2 1.1 2.7c1 .9 2.2.8 2.7.9C6 17.8 12 17.8 12 17.8s4.7 0 8-.2c.5-.1 1.5-.1 2.4-1 .8-.7 1.1-2.7 1.1-2.7s.3-2.2.3-4.5V7.3c0-2.3-.3-4.5-.3-4.5zM9.7 12.2V5.3l6.6 3.5-6.6 3.4z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* Link groups */}
-          {Object.entries(links).map(([group, items]) => (
-            <div key={group}>
-              <p
-                className="text-white font-semibold text-sm mb-4"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                {group}
-              </p>
-              <ul className="space-y-3">
-                {items.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-[#A3A3A3] text-sm hover:text-white transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="border-t border-white/5 py-10 px-4 bg-[#0A0A0A]">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col items-center sm:items-start gap-3">
+          <LogoHorizontal iconSize={28} />
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#A3A3A3] hover:text-neon transition-colors text-sm"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" className="text-neon flex-shrink-0">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.01 17.01C16.48 18.54 14.32 19.2 12 19.2c-1.87 0-3.69-.48-5.29-1.39L2 19.2l1.41-4.62C2.48 12.97 2 11.52 2 10c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.07-.63 4-1.71 5.6l-.28.41z"/>
+            </svg>
+            (11) 91095-0968
+          </a>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#A3A3A3] text-xs">
-          <p>
-            Feito com{' '}
-            <span className="text-danger">&#9829;</span> em São Paulo
-            {' '}· PedeSampa Tecnologia Ltda · CNPJ 25.354.981/0001-04
-          </p>
+        <div className="text-center sm:text-right text-[#A3A3A3] text-xs space-y-1">
+          <p>Feito com <span className="text-danger">&#9829;</span> em São Paulo · PedeSampa Tecnologia Ltda · CNPJ 25.354.981/0001-04</p>
           <p>© {new Date().getFullYear()} PedeSampa. Todos os direitos reservados.</p>
         </div>
       </div>

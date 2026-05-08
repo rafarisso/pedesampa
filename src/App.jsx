@@ -5,7 +5,9 @@ import { LogoHorizontal, LogoIcon } from './Logo'
 // UTILITY COMPONENTS
 // ������������������������������������������������������������������������������������������
 
-function GreenButton({ children, className = '', size = 'lg', ...props }) {
+const WHATSAPP_URL = 'https://wa.me/5511910950968'
+
+function GreenButton({ children, className = '', size = 'lg', href, ...props }) {
   const base =
     'inline-block font-display font-800 uppercase tracking-widest text-dark bg-neon rounded-[6px] transition-all duration-200 hover:brightness-110 active:scale-95 neon-box cursor-pointer select-none'
   const sizes = {
@@ -14,12 +16,18 @@ function GreenButton({ children, className = '', size = 'lg', ...props }) {
     lg: 'px-10 py-5 text-lg',
     xl: 'px-12 py-6 text-xl',
   }
+  const classes = `${base} ${sizes[size]} ${className}`
+  const style = { fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }
+
+  if (href) {
+    return (
+      <a href={href} className={classes} style={style} {...props}>
+        {children}
+      </a>
+    )
+  }
   return (
-    <button
-      className={`${base} ${sizes[size]} ${className}`}
-      style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
-      {...props}
-    >
+    <button className={classes} style={style} {...props}>
       {children}
     </button>
   )
@@ -210,7 +218,7 @@ function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <GreenButton size="sm">QUERO MEU APP</GreenButton>
+          <GreenButton size="sm" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">QUERO MEU APP</GreenButton>
         </div>
 
         {/* Mobile hamburger */}
@@ -246,7 +254,7 @@ function Navbar() {
               {l}
             </a>
           ))}
-          <GreenButton size="md" className="mt-2 w-full">QUERO MEU APP</GreenButton>
+          <GreenButton size="md" className="mt-2 w-full" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">QUERO MEU APP</GreenButton>
         </div>
       )}
     </nav>
@@ -322,7 +330,7 @@ function Hero() {
       </p>
 
       {/* CTA */}
-      <GreenButton size="xl" className="mb-12">
+      <GreenButton size="xl" className="mb-12" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
         Quero Meu App Agora
       </GreenButton>
 
@@ -403,7 +411,7 @@ function PainSection() {
 
         {/* Mid CTA */}
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          <GreenButton size="lg">Vira o Jogo Agora</GreenButton>
+          <GreenButton size="lg" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Vira o Jogo Agora</GreenButton>
           <p className="text-[#A3A3A3] text-sm">Sem mensalidade escondida. Pagamento único.</p>
         </div>
 
@@ -428,12 +436,15 @@ function PainSection() {
               Zero comissão. Seu cardápio, sua marca, seu cliente.
             </p>
           </div>
-          <button
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-dark text-neon font-display font-800 uppercase tracking-widest px-8 py-4 rounded-[6px] whitespace-nowrap text-base hover:bg-[#111] transition-colors flex-shrink-0"
             style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
           >
             Começar Agora
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -543,7 +554,7 @@ function HowItWorks() {
               </div>
             ))}
 
-            <GreenButton size="lg" className="mt-4">
+            <GreenButton size="lg" className="mt-4" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               Começar Agora por R$ 99
             </GreenButton>
           </div>
@@ -979,7 +990,10 @@ function PriceSection() {
 
               {/* CTAs */}
               <div className="space-y-2">
-                <button
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full py-3 rounded-[6px] border border-white/15 text-white text-sm font-semibold flex items-center justify-center gap-2 hover:border-white/30 transition-colors"
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
@@ -988,13 +1002,16 @@ function PriceSection() {
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.01 17.01C16.48 18.54 14.32 19.2 12 19.2c-1.87 0-3.69-.48-5.29-1.39L2 19.2l1.41-4.62C2.48 12.97 2 11.52 2 10c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.07-.63 4-1.71 5.6l-.28.41z"/>
                   </svg>
                   Falar no WhatsApp
-                </button>
-                <button
+                </a>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`w-full py-3 rounded-[6px] text-sm font-bold flex items-center justify-center gap-2 transition-all hover:brightness-110 active:scale-95 ${plan.popular ? 'bg-neon text-dark neon-box' : 'bg-white/10 text-white hover:bg-white/15'}`}
                   style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, letterSpacing: '0.05em', fontSize: '15px' }}
                 >
                   Assinar agora
-                </button>
+                </a>
               </div>
             </div>
           ))}
@@ -1240,7 +1257,7 @@ function FinalCTA() {
           Seu delivery próprio por R$ 99. Chega de pagar pedágio pro iFood.
         </p>
 
-        <GreenButton size="xl" className="mb-4">
+        <GreenButton size="xl" className="mb-4" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
           Quero Meu App
         </GreenButton>
 
@@ -1300,8 +1317,21 @@ function Footer() {
             <p className="text-[#A3A3A3] text-sm leading-relaxed max-w-xs">
               O app de delivery próprio do seu restaurante. Zero comissão, feito em São Paulo.
             </p>
+            {/* WhatsApp contact */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-[#A3A3A3] hover:text-neon transition-colors text-sm"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-neon flex-shrink-0">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.01 17.01C16.48 18.54 14.32 19.2 12 19.2c-1.87 0-3.69-.48-5.29-1.39L2 19.2l1.41-4.62C2.48 12.97 2 11.52 2 10c0-5.52 4.48-10 10-10s10 4.48 10 10c0 2.07-.63 4-1.71 5.6l-.28.41z"/>
+              </svg>
+              (11) 91095-0968
+            </a>
             {/* Socials */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 mt-4">
               {/* Instagram */}
               <a
                 href="#"

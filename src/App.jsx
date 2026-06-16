@@ -23,6 +23,16 @@ function handleWhatsAppClick(location) {
   }
 }
 
+function trackVisitClient(location) {
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    try {
+      window.fbq('trackCustom', 'VisitClient', { location })
+    } catch {
+      // Do not block navigation if the tracking script is unavailable or fails.
+    }
+  }
+}
+
 function SectionLabel({ children }) {
   return (
     <span className="mb-4 inline-flex text-xs font-bold uppercase text-neon">
@@ -490,41 +500,86 @@ function ForWhoSection() {
   )
 }
 
+function PhoneShowcase({ src, name, type, url, location }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackVisitClient(location)}
+      className="group flex flex-col items-center"
+    >
+      <div className="relative w-full max-w-[230px] rounded-[34px] border border-white/15 bg-[#101010] p-2.5 shadow-[0_28px_70px_rgba(0,0,0,0.48)] transition group-hover:-translate-y-1.5 group-hover:border-neon/50">
+        <span className="absolute left-1/2 top-2.5 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-black/40" />
+        <div className="overflow-hidden rounded-[26px] bg-dark">
+          <img
+            src={src}
+            alt={`Cardápio digital real de ${name}`}
+            loading="lazy"
+            className="aspect-[9/19] w-full object-cover object-top"
+          />
+        </div>
+      </div>
+
+      <div className="mt-5 text-center">
+        <p className="font-display text-lg font-black leading-none text-white">{name}</p>
+        <p className="mt-1.5 text-sm text-white/55">{type}</p>
+        <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-neon transition group-hover:gap-2.5">
+          Visitar cardápio
+          <span aria-hidden="true">↗</span>
+        </span>
+      </div>
+    </a>
+  )
+}
+
 function VisualExamples() {
   const examples = [
-    { src: '/apps/chefinho.png', label: 'Modelo demonstrativo para hamburgueria' },
-    { src: '/apps/clickinburger.png', label: 'Modelo demonstrativo de cardápio com fotos' },
-    { src: '/apps/condor.png', label: 'Modelo demonstrativo para restaurante' },
+    {
+      src: '/apps/chefinho.png',
+      name: 'Hamburgueria do Chefinho',
+      type: 'Hamburgueria',
+      url: 'https://hamburgueriadochefinho.com.br/',
+      location: 'client_chefinho',
+    },
+    {
+      src: '/apps/clickinburger.png',
+      name: 'Clickin Burger',
+      type: 'Lanches e combos',
+      url: 'https://clickinburger.netlify.app/',
+      location: 'client_clickinburger',
+    },
+    {
+      src: '/apps/condor.png',
+      name: 'Pizzaria Condor',
+      type: 'Pizzaria',
+      url: 'https://pizzariacondor.com.br/',
+      location: 'client_condor',
+    },
   ]
 
   return (
     <section className="border-y border-white/10 bg-white/[0.03] px-4 py-16 sm:px-6 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
-          <SectionLabel>Veja como pode ficar</SectionLabel>
+          <SectionLabel>Clientes reais do PedeSampa</SectionLabel>
           <h2 className="font-display text-4xl font-black leading-none text-white sm:text-5xl">
-            Modelo de cardápio digital para divulgar no Instagram, WhatsApp e Google
+            Veja como ficaria o cardápio digital da sua loja
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/70">
-            As telas abaixo são modelos demonstrativos para mostrar o visual do cardápio e a experiência de escolha do cliente.
+            Esses são clientes reais atendidos pelo PedeSampa. Cada cardápio fica com a cara e o logotipo da loja. Toque em um celular para abrir e navegar como se fosse o seu cliente.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-6">
           {examples.map((example) => (
-            <div key={example.src} className="overflow-hidden rounded-lg border border-white/10 bg-dark">
-              <img
-                src={example.src}
-                alt={example.label}
-                loading="lazy"
-                className="h-72 w-full object-cover object-top"
-              />
-              <p className="border-t border-white/10 px-4 py-4 text-sm font-bold text-white/75">
-                {example.label}
-              </p>
-            </div>
+            <PhoneShowcase key={example.src} {...example} />
           ))}
         </div>
+
+        <p className="mt-10 text-center text-sm font-semibold text-white/55">
+          É assim que ficaria o seu — com seu nome, suas cores e seus produtos.
+        </p>
       </div>
     </section>
   )

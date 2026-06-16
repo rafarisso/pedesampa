@@ -112,7 +112,7 @@ function Navbar() {
 
         <div className="hidden md:block">
           <CtaButton size="sm" location="navbar">
-            Quero meu cardápio
+            Ver meu modelo
           </CtaButton>
         </div>
 
@@ -142,7 +142,7 @@ function Navbar() {
               </a>
             ))}
             <CtaButton location="menu_mobile" className="w-full">
-              Quero meu cardápio digital
+              Quero ver meu modelo pronto
             </CtaButton>
           </div>
         </div>
@@ -231,8 +231,11 @@ function Hero() {
           <h1 className="max-w-4xl font-display text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
             Seu cardápio digital por apenas <span className="text-neon">R$ 99/mês</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/78 sm:text-xl">
-            O cliente acessa, escolhe os produtos, informa como vai pagar e o pedido chega pronto no WhatsApp da sua loja.
+          <p className="mt-5 max-w-2xl font-display text-2xl font-black leading-tight text-neon sm:text-3xl">
+            O pedido chega pronto no WhatsApp da sua loja.
+          </p>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/78 sm:text-xl">
+            O cliente acessa, escolhe os produtos, informa como vai pagar e envia tudo organizado para você.
           </p>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -246,14 +249,14 @@ function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <CtaButton location="hero_primary" className="w-full sm:w-auto">
-              Quero meu cardápio digital
+              Quero ver meu modelo pronto
             </CtaButton>
             <OutlineLink href="#como-funciona" className="w-full sm:w-auto">
               Ver como funciona
             </OutlineLink>
           </div>
           <p className="mt-3 text-sm font-semibold text-white/55">
-            Peça uma prévia sem compromisso.
+            Sem compromisso. A gente te mostra como ficaria para sua loja.
           </p>
         </div>
 
@@ -352,8 +355,8 @@ function WhatsAppOrderMockup() {
     <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4 sm:p-6">
       <div className="rounded-lg bg-[#e6f3e8] p-4 text-[#111] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
         <div className="mb-4 flex items-center gap-3 border-b border-black/10 pb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1f9d55] text-lg font-black text-white">
-            W
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1f9d55] text-sm font-black tracking-tight text-white">
+            PS
           </div>
           <div>
             <p className="font-black">WhatsApp da loja</p>
@@ -411,6 +414,77 @@ function WhatsAppSection() {
         </div>
 
         <WhatsAppOrderMockup />
+      </div>
+    </section>
+  )
+}
+
+function ReadyOrderSection() {
+  const steps = [
+    'Escolhe os produtos',
+    'Adiciona observações',
+    'Vê o total',
+    'Informa como vai pagar',
+    'Envia o pedido organizado',
+  ]
+
+  return (
+    <section className="border-y border-white/10 bg-white/[0.03] px-4 py-16 sm:px-6 lg:py-20">
+      <div className="mx-auto max-w-4xl text-center">
+        <SectionLabel>O cliente faz o trabalho</SectionLabel>
+        <h2 className="mx-auto max-w-3xl font-display text-4xl font-black leading-none text-white sm:text-5xl">
+          Antes de te chamar, o cliente já escolheu tudo
+        </h2>
+
+        <div className="mt-10 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-3">
+          {steps.map((step) => (
+            <div key={step} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-5">
+              <CheckMark />
+              <p className="font-bold leading-snug text-white">{step}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-lg font-bold leading-relaxed text-white">
+          Você para de explicar cardápio e começa a receber pedidos mais prontos.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function ForWhoSection() {
+  const niches = [
+    'Hamburguerias',
+    'Pizzarias',
+    'Marmitarias',
+    'Docerias',
+    'Açaiterias',
+    'Lanchonetes',
+    'Restaurantes de bairro',
+  ]
+
+  return (
+    <section className="px-4 py-16 sm:px-6 lg:py-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-3xl">
+          <SectionLabel>Para o seu tipo de negócio</SectionLabel>
+          <h2 className="font-display text-4xl font-black leading-none text-white sm:text-5xl">
+            Feito para quem vende comida pelo WhatsApp
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-white/70">
+            Se você ainda manda cardápio por print ou responde preço no WhatsApp toda hora, o PedeSampa é para você.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {niches.map((niche) => (
+            <div key={niche} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-5">
+              <CheckMark />
+              <p className="font-display text-xl font-black leading-none text-white">{niche}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -482,10 +556,10 @@ function IncludedSection() {
             </p>
             <div className="mt-8 rounded-lg border border-neon/35 bg-neon/[0.09] p-6">
               <h3 className="font-display text-3xl font-black text-neon">
-                Manutenção inclusa
+                Mudou o preço? Mudou o produto? A gente ajusta para você.
               </h3>
               <p className="mt-3 leading-relaxed text-white/78">
-                Precisa alterar preço, produto ou informação do cardápio? A manutenção simples já está inclusa no plano.
+                Alterações simples de produtos, preços, categorias e informações do cardápio já estão inclusas no plano.
               </p>
             </div>
           </div>
@@ -523,6 +597,9 @@ function PricingSection() {
           </h2>
           <p className="mt-5 text-xl font-bold text-white/78">
             Sem comissão. Sem taxa por pedido. Sem complicação.
+          </p>
+          <p className="mt-4 text-lg font-semibold leading-relaxed text-neon">
+            Menos que muitos pedidos por delivery — e sem comissão por venda.
           </p>
         </div>
 
@@ -648,11 +725,11 @@ function FinalCTA() {
         </p>
         <div className="mt-8">
           <CtaButton location="final_cta">
-            Quero meu cardápio digital
+            Quero ver meu modelo pronto
           </CtaButton>
         </div>
         <p className="mt-3 text-sm font-semibold text-white/55">
-          Peça uma prévia sem compromisso.
+          Sem compromisso. A gente te mostra como ficaria para sua loja.
         </p>
       </div>
     </section>
@@ -675,8 +752,8 @@ function Footer() {
 function MobileStickyCTA() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-[60] border-t border-white/10 bg-dark/95 p-3 backdrop-blur md:hidden">
-      <CtaButton location="sticky_mobile" className="w-full">
-        Quero meu cardápio digital
+      <CtaButton location="mobile_fixed_cta" className="w-full">
+        Ver meu modelo pronto
       </CtaButton>
     </div>
   )
@@ -691,6 +768,8 @@ export default function App() {
         <ProcessSection />
         <PainSection />
         <WhatsAppSection />
+        <ReadyOrderSection />
+        <ForWhoSection />
         <VisualExamples />
         <IncludedSection />
         <PricingSection />
